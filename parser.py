@@ -117,14 +117,15 @@ def clients():
             sleep(0.1)
     return clients_list
 
-
+# don't need this 
+'''
 def multiplication_column():
     print('\ntotal cost\n')
     am_c = amount_column()
     p_c = price_column()
     for i in range(len(p_c)):
         print(am_c[i] * p_c[i])
-
+'''
 
 def main():
     second_column()
