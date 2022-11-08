@@ -1,6 +1,4 @@
 import openpyxl
-from time import sleep
-
 
 filename = input('Type in .xlsx file you want to parse: ')
 book = openpyxl.open(filename=filename)
@@ -50,8 +48,6 @@ def supply():
             suppliers.append(supp)
             print(supp)
 
-            sleep(0.1)
-
 
 # date
 def second_column():
@@ -65,7 +61,6 @@ def second_column():
         print(sheet[array2fill[j]].value)
         dates.append(sheet[array2fill[j]].value)
         # remove this loop and parse data in new Excel file
-        sleep(0.1)
 
 
 # price to parse
@@ -78,7 +73,6 @@ def price_column():
                 if string.startswith('Цена:'):
                     print(string[5:-1])
                     prices.append(string[5:-1])
-            sleep(0.1)
 
     new_prices = [int(x) for x in prices]
 
@@ -95,7 +89,6 @@ def amount_column():
                 if string.startswith('Кол-во:'):
                     print(f"{string[-1]}{strings[strings.index(string) + 1]}")
                     amount.append(f"{string[-1]}{strings[strings.index(string) + 1]}")
-            sleep(0.1)
 
     # in this function make a list of float numbers
 
@@ -114,18 +107,16 @@ def clients():
         if sheet[f'C{i}'].value is not None:
             print(sheet[f'B{i}'].value.split(',')[0])
             clients_list.append(sheet[f'B{i}'].value.split(',')[0])
-            sleep(0.1)
     return clients_list
 
-# don't need this 
-'''
+
 def multiplication_column():
     print('\ntotal cost\n')
     am_c = amount_column()
     p_c = price_column()
     for i in range(len(p_c)):
         print(am_c[i] * p_c[i])
-'''
+
 
 def main():
     second_column()
@@ -139,5 +130,3 @@ def main():
 if __name__ == '__main__':
     print(f'\nInfo about {filename[:-5]} presented below')
     main()
-
-
